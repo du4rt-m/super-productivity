@@ -6,7 +6,7 @@
   [required]="required"
   [errorStateMatcher]="errorStateMatcher"
   [value]="formControl.value"
-  (change)="onInputValueChange($event)"
+  (blur)="onBlur($event)"
   (keydown)="onKeyDown($event)"
   [formlyAttributes]="field"
   [formControl]="formControl"

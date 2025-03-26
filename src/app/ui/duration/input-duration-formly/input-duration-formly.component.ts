@@ -22,19 +22,25 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 export class InputDurationFormlyComponent extends FieldType<FormlyFieldConfig> {
   readonly input = viewChild.required('inputEl', { read: ElementRef });
 
-  // @ViewChild(MatInput, {static: true}) formFieldControl?: MatInput;
+  // changed to onBlur to be more consistent
+  /* // @ViewChild(MatInput, {static: true}) formFieldControl?: MatInput;
   onInputValueChange(ev: Event): void {
     const val = (ev.target as HTMLInputElement).value;
     console.log('onInputValueChange', val);
     // this.formControl.setValue(val);
     this._updateValue(val);
-  }
+  } */
 
   onKeyDown(ev: KeyboardEvent): void {
     if (ev.key === 'Enter') {
       const val = (ev.target as HTMLInputElement).value;
       this._updateValue(val);
     }
+  }
+
+  onBlur(ev: FocusEvent): void {
+    const val = (ev.target as HTMLInputElement).value;
+    this._updateValue(val);
   }
 
   private _updateValue(val: string): void {

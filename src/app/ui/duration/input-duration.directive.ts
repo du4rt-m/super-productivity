@@ -100,9 +100,10 @@ export class InputDurationDirective
   }
 
   @HostListener('input', ['$event.target.value']) _onInput(value: string): void {
-    this._msValue = this._stringToMs.transform(value);
+    // allow parsing logic in input-duration-formly.component.ts which was before bypassed
+    /* this._msValue = this._stringToMs.transform(value);
     this._value = this._msToString.transform(this._msValue, false, true);
-    this._onChangeCallback(this._msValue);
+    this._onChangeCallback(this._msValue); */
   }
 
   ngAfterViewChecked(): void {
